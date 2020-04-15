@@ -1,0 +1,11 @@
+docker-build:
+    ip: 192.168.4.14 # Vagrant VM local IP
+    box: generic/alpine38 # Base Image used
+    memory: 2048 # Default memory assigned to the VM
+    bootstrap: bootstrap-scripts/bootstrap.sh # Path to the bootstrap script
+    git_ssh_key_path: 'C:\Users\YOUR_USER\.ssh\id_rsa' # Path to your local machine ssh key
+    artifacts_dir: # Directories to mount inside on the VM
+        - host: 'YOUR_PROJECTS_PATH'
+          guest: /repos
+    env_var: # Environement variables to inject on the VM
+        - TEST_ME_VAR: "this_is_a_test_var"
