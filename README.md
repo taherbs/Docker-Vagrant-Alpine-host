@@ -2,7 +2,7 @@
 
 A Vagrant environment to deploy docker/docker-compose/git on an alpine base image.<br />
 This project is meant to deploy the same development environment regardless of the hosting platform (Windows/macOS/Linux).<br />
-This project is meant to have a fully workable and lightweight docker environment. 
+This project is meant to have a fully workable and lightweight docker environment.
 
 ## Prerequisites:
 ### Windows:
@@ -16,7 +16,10 @@ choco install virtualbox --version=6.0.16
 ```
 vagrant plugin install vagrant-disksize
 ```
-
+* vagrant vbguest plugin
+```
+vagrant plugin install vagrant-vbguest
+```
 ### OSX
 ```bash
 # Install Homebrew

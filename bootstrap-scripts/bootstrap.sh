@@ -6,8 +6,8 @@ set -e
 
 # Install pip and other dependencies
 apk update
-apk add python3-dev libffi-dev openssl-dev gcc libc-dev make git
-apk add py-pip
+apk add python3 libffi-dev openssl-dev gcc libc-dev make git
+apk add py3-pip
 
 # Install/Config docker
 sed -i 's/quiet/quiet cgroup_enable=memory swapaccount=1/' /boot/extlinux.conf
@@ -20,10 +20,11 @@ memb="${memb},vagrant"
 sed -e "s/^docker:\(.*\):\([^:]*\)$/docker:\1:${memb}/g" -i /etc/group
 
 # Make docker run at start
-rc-update add docker 
+service docker start
+rc-update add docker
 
 # Install docker-compose
-pip3 install docker-compose 
+pip3 install 'docker-compose==1.8.0'
 
 # Install docker-bash-completion
 apk add docker-bash-completion

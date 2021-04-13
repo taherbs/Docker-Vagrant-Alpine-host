@@ -26,7 +26,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       # Run the provisioner/preparation scripts
       ## Set git config
-      config.vm.provision "file", source: docker_build_settings['git_ssh_key_path'], destination: "/home/vagrant/.ssh/id_rsa"
+      config.vm.provision "file", source: docker_build_settings['git_ssh_key_path'], destination: "/tmp/id_rsa"
+      config.vm.provision "shell", inline: "mv /tmp/id_rsa /home/vagrant/.ssh/id_rsa"
 
       ## Setting env vars
       docker_build_settings['env_var'].each do |var|
